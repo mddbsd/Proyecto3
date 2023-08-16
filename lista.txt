@@ -1,0 +1,4 @@
+La familia de protocolos de internet o pila de protocolos de 
+Internet1​ es un conjunto constituido por los protocolos de 
+red clave que componen la arquitectura de internet y que permiten 
+la comunicación efectiva y la transmisión de datos entre computadoras. 
