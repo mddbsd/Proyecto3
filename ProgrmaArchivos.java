@@ -34,7 +34,13 @@ public class ProgrmaArchivos {
                     System.out.println("El archivo se guardo correctamente");
                     break;
                 case "5":
+                    funciones.Kontrol.Listar();
+                    break;
+                case "6":
                     flag = false;
+                    break;
+                case "debug":
+                    funciones.Kontrol.Debug(frutas);
                     break;
                 default:
                     System.out.println("Opcion incorrecta");

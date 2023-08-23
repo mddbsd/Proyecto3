@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -28,14 +29,22 @@ public class Kontrol {
         Scanner s = new Scanner(System.in);
         ArrayList<String> archivo = new ArrayList<String>();
         String nombreArchivo = "";
-        String linea = "";
+        String linea = "p";
+        boolean flag = true;
         try{
             System.out.println("Ingrese el nombre del archivo con la extencion");
             nombreArchivo = s.nextLine();
             BufferedReader br = new BufferedReader(new FileReader("./ArchivosFrutas/" + nombreArchivo));
-            while (linea != null){
+            /*for(int i = 0; i < archivo.size() - 1; i ++){
+                br.readLine();
+            }*/
+            while (linea != null && flag){
                 linea = br.readLine();
-                archivo.add(linea);
+                if (linea.isEmpty()){
+                    flag = false;
+                }else{
+                    archivo.add(linea);
+                }
             }
             br.close();
         }catch (FileNotFoundException fnfe){
@@ -44,5 +53,26 @@ public class Kontrol {
             System.out.println("El archivo no se puede leer");
         }
         return archivo;
+    }
+
+    public static void Listar (){
+        File f = new File("./ArchivosFrutas");
+        String[] listaArchivos = f.list();
+        for (String nombreDeArchivo : listaArchivos){
+            System.out.println(nombreDeArchivo);
+        }
+    }
+
+    public static void Debug(ArrayList<String> aListDebug){
+        System.out.println("Estado Inicial: ");
+        for(String linea : aListDebug){
+            System.out.println(linea);
+        }
+        System.out.println(aListDebug.size());
+        aListDebug.remove(aListDebug.size() - 1);
+        System.out.println("Aplicado el remove con size() - 1");
+        for(String linea : aListDebug){
+            System.out.println(linea);
+        }
     }
 }
