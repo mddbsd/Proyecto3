@@ -17,8 +17,14 @@ public class Kontrol {
             System.out.println("Ingrese el nombre del archivo");
             nombreArchivo = s.nextLine();
             BufferedWriter bw = new BufferedWriter(new FileWriter("./ArchivosFrutas/" + nombreArchivo + ".txt"));
+            int i = 0;
             for(String linea : archivo){
-                bw.write(linea + "\n");
+                i ++;
+                if (archivo.size() == i){ 
+                    bw.write(linea);
+                }else{
+                    bw.write(linea + "\n");
+                }
             }
             bw.close();
         } catch (IOException ioe){
@@ -29,20 +35,14 @@ public class Kontrol {
         Scanner s = new Scanner(System.in);
         ArrayList<String> archivo = new ArrayList<String>();
         String nombreArchivo = "";
-        String linea = "p";
-        boolean flag = true;
+        String linea = "";
         try{
             System.out.println("Ingrese el nombre del archivo con la extencion");
             nombreArchivo = s.nextLine();
             BufferedReader br = new BufferedReader(new FileReader("./ArchivosFrutas/" + nombreArchivo));
-            /*for(int i = 0; i < archivo.size() - 1; i ++){
-                br.readLine();
-            }*/
-            while (linea != null && flag){
+            while (linea != null){
                 linea = br.readLine();
-                if (linea.isEmpty()){
-                    flag = false;
-                }else{
+                if (linea != null){
                     archivo.add(linea);
                 }
             }
